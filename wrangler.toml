@@ -1,0 +1,7 @@
+name = "vynoxplus-bot"
+main = "src/index.js"
+compatibility_date = "2026-11-17"
+workers_dev = true
+
+[triggers]
+crons = ["30 6 * * *", "30 16 * * *"]
