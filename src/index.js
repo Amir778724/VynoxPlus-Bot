@@ -126,6 +126,20 @@ export default {
       });
     }
 
+    if (request.method === "GET" && url.pathname === "/activate") {
+      try {
+        const result = await telegram(env, "setWebhook", {
+          url: `${url.origin}/telegram`,
+          secret_token: env.ADMIN_KEY,
+          allowed_updates: ["message"],
+          drop_pending_updates: true
+        });
+        return json({ ok: true, message: "Telegram webhook activated", webhook_configured: result.result });
+      } catch (error) {
+        return json({ ok: false, error: error.message || "Webhook setup failed" }, 502);
+      }
+    }
+
     if (request.method === "POST" && url.pathname === "/telegram") {
       try {
         return await handleTelegramUpdate(request, env);
