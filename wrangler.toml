@@ -1,4 +1,4 @@
-name = "vynoxplus-bot"
+name = "vynoxplus-bot-new"
 main = "src/index.js"
 compatibility_date = "2026-11-17"
 workers_dev = true
